@@ -1,6 +1,8 @@
 package com.c14240128.dompetku
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,22 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        findViewById<Button>(R.id.btnMenuKategori).setOnClickListener {
+            startActivity(Intent(this, KategoriActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.btnMenuIncome).setOnClickListener {
+            val intent = Intent(this, TransaksiActivity::class.java)
+            intent.putExtra("TIPE_TRANSAKSI", "INCOME")
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.btnMenuExpense).setOnClickListener {
+            val intent = Intent(this, TransaksiActivity::class.java)
+            intent.putExtra("TIPE_TRANSAKSI", "EXPENSE")
+            startActivity(intent)
         }
     }
 }
